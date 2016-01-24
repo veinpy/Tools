@@ -95,9 +95,23 @@ def determine_k(*args):
         if logWkbs[i]-logWks[i]>=(logWkbs[i+1]-logWks[i+1])-sk[i+1]:
             K.append(ks[i])   
 
+def K_determin(X,plot=False):
+    ks, logWks, logWkbs, sk = gap_statistic(X)
+    gaps = []
+    for i in range(len(ks)):
+        gaps.append(logWkbs[i]-logWks[i])
+        if logWkbs[i]-logWks[i]>=(logWkbs[i+1]-logWks[i+1])-sk[i+1]:
+            print ks[i]
+    if plot:
+        from matplotlib import pyplot as plt
+        plt.plot(gaps)
+        plt.title('gaps')
+        plt.show()
+    return ks
+
 if __name__ =='__main__':
     X = init_board_gauss(200,3)
     ks, logWks, logWkbs, sk = gap_statistic(X)
-    for i in range(len(ks)):
+    for i in range(len(ks)-1):
         if logWkbs[i]-logWks[i]>=(logWkbs[i+1]-logWks[i+1])-sk[i+1]:
             print ks[i]

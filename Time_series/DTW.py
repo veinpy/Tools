@@ -50,8 +50,9 @@ def LB_Keogh(s1,s2,r):
             LB_sum=LB_sum+(i-lower_bound)**2
 
     return sqrt(LB_sum)
-
+##
 ##testing code
+##
 import numpy as np
 
 from sklearn.metrics import classification_report
@@ -123,3 +124,15 @@ def try_clustering():
         plt.plot(i)
 
     plt.show()
+
+def sin_dtw():
+    from matplotlib import pyplot as plt
+    x = np.linspace(-np.pi, np.pi, 201)
+    x = np.sin(x)
+    y = np.linspace(-np.pi/2, np.pi*3/2, 201)
+    y = np.sin(y)
+    DTWDistance(x,y,50)
+    plt.plot(x,'r');plt.plot(y,'b');plt.show()
+
+if __name__ == '__main__':
+    sin_dtw()
